@@ -6,6 +6,6 @@ export interface IProduct{
     releaseDate :string;
     price : number;
     description : string;
-    startRating : number;
+    starRating : number;
     imageUrl:string
 }
