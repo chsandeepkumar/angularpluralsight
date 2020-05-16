@@ -1,3 +1,4 @@
+
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
@@ -11,6 +12,7 @@ import { AppComponent } from './app.component';
 import { StarComponent } from './shared/star.compnent';
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { ProductDetailGuard } from './products/product-detail.guard';
 
 
 
@@ -36,7 +38,9 @@ const newLocal = [
     HttpClientModule,
     RouterModule.forRoot( [
       { path: 'products', component: ProductListComponent },
-      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'products/:id', 
+      canActivate:[ProductDetailGuard],
+      component: ProductDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
